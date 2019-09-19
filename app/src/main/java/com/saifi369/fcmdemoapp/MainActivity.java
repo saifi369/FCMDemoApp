@@ -4,13 +4,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
-import com.google.firebase.messaging.FirebaseMessaging;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,21 +17,15 @@ public class MainActivity extends AppCompatActivity {
 
         mOutputText=findViewById(R.id.tv_output);
 
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+        if (getIntent() != null && getIntent().hasExtra("key1")) {
+            mOutputText.setText("");
 
-                        if(task.isSuccessful()){
-                            String token=task.getResult().getToken();
-                            Log.d(TAG, "onComplete: Token: "+token);
-                            mOutputText.setText("Token Generated");
-                        }else{
-                            mOutputText.setText("Token generation failed");
-                        }
+            for (String key : getIntent().getExtras().keySet()) {
+                Log.d(TAG, "onCreate: Key: " + key + " Data: " + getIntent().getExtras().getString(key));
+                mOutputText.append(getIntent().getExtras().getString(key) + "\n");
+            }
 
-                    }
-                });
+        }
 
     }
 }
