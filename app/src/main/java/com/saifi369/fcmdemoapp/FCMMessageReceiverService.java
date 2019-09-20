@@ -41,6 +41,12 @@ public class FCMMessageReceiverService extends FirebaseMessagingService {
         }
 
         if (remoteMessage.getData().size() > 0) {
+            Log.d(TAG, "onMessageReceived: Data Size: " + remoteMessage.getData().size());
+
+            for (String key : remoteMessage.getData().keySet()) {
+                Log.d(TAG, "onMessageReceived Key: " + key + " Data: " + remoteMessage.getData().get(key));
+            }
+
             Log.d(TAG, "onMessageReceived: Data: " + remoteMessage.getData().toString());
         }
 
