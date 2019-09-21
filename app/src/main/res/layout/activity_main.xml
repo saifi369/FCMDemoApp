@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btn_unsub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Unsubsribe Topic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="UnSubscribe Topic" />
+
+    <Button
+        android:id="@+id/btn_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:text="Subsribe Topic"
+        app:layout_constraintBottom_toTopOf="@+id/btn_unsub"
+        app:layout_constraintStart_toStartOf="@+id/btn_unsub"
+        tools:text="Subscribe Topic" />
+
     <TextView
         android:id="@+id/tv_output"
         android:layout_width="wrap_content"
